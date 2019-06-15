@@ -1,0 +1,21 @@
+{
+  "name": "graphql-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "generate-swagger": "node utils/generateSwagger.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.3.1",
+    "graphql-tag": "^2.10.1",
+    "graphql-tools": "^4.0.4",
+    "sofa-api": "^0.3.0",
+    "swagger-ui-express": "^4.0.6"
+  }
+}
