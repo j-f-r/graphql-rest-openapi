@@ -10,7 +10,11 @@ module.exports = gql`
     user(id: ID!): User
     users: [User!]
   }
+  type Mutation {
+    createUser(name: String!): User
+  }
   schema {
     query: Query
+    mutation: Mutation
   }
 `;

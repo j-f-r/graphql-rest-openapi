@@ -2,12 +2,16 @@ const sofa = require('sofa-api');
 const express = require('express');
 const expGraphQL = require('express-graphql');
 const { makeExecutableSchema } = require('graphql-tools');
+const bodyParser = require('body-parser');
+
 
 const typeDefs = require('../graphql/types');
 const resolvers = require('../graphql/resolvers');
 
 const instantiateApp = (exposeSwagger = null) => {
     const app = express();
+
+    app.use(bodyParser.json());
 
     const schema = makeExecutableSchema({
         typeDefs,

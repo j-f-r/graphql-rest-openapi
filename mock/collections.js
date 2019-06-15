@@ -1,3 +1,5 @@
+const uuidv1 = require('uuid/v1');
+
 const users = [
     {
         id: 1,
@@ -15,5 +17,11 @@ module.exports = {
         all() {
             return users;
         },
+        add(name) {
+            const newUser = { id: uuidv1(), name }
+
+            users.push(newUser)
+            return newUser;
+        }
     }
 }

@@ -12,4 +12,10 @@ module.exports = {
             return UsersCollection.all();
         },
     },
+    Mutation: {
+        createUser(_, { name }) {
+            const user = UsersCollection.add(name);
+            return user;
+        },
+    },
 };
