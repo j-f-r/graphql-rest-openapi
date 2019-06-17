@@ -1,14 +1,13 @@
 const { expect } = require("chai");
 const request = require("request");
 // TODO: Get from env
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://localhost:3000/api/users";
 
 describe("[REST] Users test", function () {
     describe("Queries", function () {
         describe("Me", function () {
-            var url = `${baseUrl}/api/users/me`;
+            var url = `${baseUrl}/me`;
             it("should return 200 code", function (done) {
-                // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
                     expect(response.statusCode).to.equal(200);
                     done();
@@ -16,7 +15,6 @@ describe("[REST] Users test", function () {
             });
 
             it("should return the first user", function (done) {
-                // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
                     var user = JSON.parse(response.body);
                     expect(user.id).to.equal('1');
@@ -26,9 +24,8 @@ describe("[REST] Users test", function () {
             });
         });
         describe("List", function () {
-            var url = `${baseUrl}/api/users/users`;
+            var url = `${baseUrl}/users`;
             it("should return 200 code", function (done) {
-                // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
                     expect(response.statusCode).to.equal(200);
                     done();
@@ -36,7 +33,6 @@ describe("[REST] Users test", function () {
             });
 
             it("should return a list of users", function (done) {
-                // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
                     var users = JSON.parse(response.body);
                     expect(users[0].id).to.equal('1');
@@ -47,9 +43,8 @@ describe("[REST] Users test", function () {
         });
 
         describe("Find", function () {
-            var url = `${baseUrl}/api/users/users/1`;
+            var url = `${baseUrl}/users/1`;
             it("should return 200 code", function (done) {
-                // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
                     expect(response.statusCode).to.equal(200);
                     done();
@@ -57,7 +52,6 @@ describe("[REST] Users test", function () {
             });
 
             it("should return a user of id 1", function (done) {
-                // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
                     var user = JSON.parse(response.body);
                     expect(user.id).to.equal('1');
@@ -68,8 +62,7 @@ describe("[REST] Users test", function () {
 
 
             it("should return not find an user", function (done) {
-                var url = `${baseUrl}/api/users/users/2`;
-                // TODO: Get user endpoint dynamically?
+                var url = `${baseUrl}/users/2`;
                 request(url, function (error, response, body) {
                     var user = JSON.parse(response.body || null);
                     expect(user).to.equal(null);
@@ -81,8 +74,7 @@ describe("[REST] Users test", function () {
 
     describe("Mutations", function () {
         it("create an user", function (done) {
-            var uri = `${baseUrl}/api/users/create-user`;
-            // TODO: Get user endpoint dynamically?
+            var uri = `${baseUrl}/create-user`;
             request({
                 uri,
                 method: 'POST',
