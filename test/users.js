@@ -6,7 +6,7 @@ const baseUrl = "http://localhost:3000";
 describe("[REST] Users test", function () {
     describe("Queries", function () {
         describe("Me", function () {
-            var url = `${baseUrl}/me`;
+            var url = `${baseUrl}/api/users/me`;
             it("should return 200 code", function (done) {
                 // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
@@ -26,7 +26,7 @@ describe("[REST] Users test", function () {
             });
         });
         describe("List", function () {
-            var url = `${baseUrl}/users`;
+            var url = `${baseUrl}/api/users/users`;
             it("should return 200 code", function (done) {
                 // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
@@ -47,7 +47,7 @@ describe("[REST] Users test", function () {
         });
 
         describe("Find", function () {
-            var url = `${baseUrl}/user/1`;
+            var url = `${baseUrl}/api/users/users/1`;
             it("should return 200 code", function (done) {
                 // TODO: Get users endpoint dynamically?
                 request(url, function (error, response, body) {
@@ -68,10 +68,10 @@ describe("[REST] Users test", function () {
 
 
             it("should return not find an user", function (done) {
-                var url = `${baseUrl}/user/2`;
+                var url = `${baseUrl}/api/users/users/2`;
                 // TODO: Get user endpoint dynamically?
                 request(url, function (error, response, body) {
-                    var user = JSON.parse(response.body);
+                    var user = JSON.parse(response.body || null);
                     expect(user).to.equal(null);
                     done();
                 });
@@ -81,7 +81,7 @@ describe("[REST] Users test", function () {
 
     describe("Mutations", function () {
         it("create an user", function (done) {
-            var uri = `${baseUrl}/create-user`;
+            var uri = `${baseUrl}/api/users/create-user`;
             // TODO: Get user endpoint dynamically?
             request({
                 uri,
