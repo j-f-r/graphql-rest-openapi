@@ -5,7 +5,6 @@ const usersEndpoints = require('./users');
 const parseGraphQLResponse = (req, res, next) => {
     const { graphqlResponse, graphqlOperationName } = req;
     if (graphqlResponse.data) {
-        console.log(graphqlOperationName, graphqlResponse, graphqlResponse.data[graphqlOperationName])
         res.send(graphqlResponse.data[graphqlOperationName]);
     }
 }
